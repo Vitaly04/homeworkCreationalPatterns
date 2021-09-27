@@ -19,9 +19,11 @@ public class Person {
         this.surname = surname;
         this.age = age;
     }
+
     public boolean hasAge() {
         return getAge().isPresent();
     }
+
     public boolean hasAddress() {
         return address != null;
     }
@@ -29,13 +31,16 @@ public class Person {
     public String getName() {
         return name;
     }
+
     public String getSurname() {
         return surname;
     }
+
     public OptionalInt getAge() {
         if (age != 0) return OptionalInt.of(age);
         return OptionalInt.empty();
     }
+
     public String getAddress() {
         return address;
     }
@@ -43,25 +48,25 @@ public class Person {
     public String setAddress(String address) {
         return this.address = address;
     }
+
     public void happyBirthday() {
         if (hasAge()) age++;
     }
 
     @Override
     public String toString() {
-        if(surname == null && age == 0 && address == null) return "имя='" + name + '\'';
         return  "имя ='" + name + '\'' +
                 ", фамилия ='" + surname + '\'' +
                 ", возраст ='" + age + '\'' +
                 ", адрес ='" + address + '\'';
     }
+
     public PersonBuilder newChildBuilder() {
-        return new PersonBuilder().setName(name);
+        return new PersonBuilder().setSurname(surname).setAge(5).setAddress(address);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(name, surname, age, address);
     }
-
 }

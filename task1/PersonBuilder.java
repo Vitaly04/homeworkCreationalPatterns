@@ -28,9 +28,9 @@ public class PersonBuilder {
     }
 
     public Person build() {
+        if (name == null || surname == null) throw new IllegalStateException("Не хватает обязательных полей");
         Person person = new Person(name, surname, age);
         person.setAddress(address);
-        if (name == null) throw new IllegalStateException("Не хватает обязательных полей");
         return person;
     }
 }
